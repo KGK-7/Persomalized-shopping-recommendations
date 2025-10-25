@@ -1,0 +1,167 @@
+body {
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  background: #f6f8fa;
+  margin: 0;
+  padding: 0;
+  color: #222;
+}
+
+.login-container {
+  max-width: 320px;
+  margin: 40px auto;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.login-container input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.login-container button {
+  width: 95%;
+  background: #0078d7;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background: #005fa3;
+}
+
+#loginMessage {
+  margin-top: 15px;
+  color: red;
+}
+
+.message {
+  text-align: center;
+  margin: 20px;
+}
+
+.header {
+  text-align: center;
+  padding: 20px;
+  background: #0078d7;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.product-name {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #111;
+}
+.product-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+/* #developed by Madhu54_bitlitz */
+
+.product-price {
+  color: #0078d7;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+
+.view-btn {
+  background: #0078d7;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.view-btn:hover {
+  background: #005fa3;
+}
+
+.message {
+  text-align: center;
+  color: #666;
+  margin: 20px;
+}
+
+button {
+  padding: 8px 12px;
+  margin: 5px 5px 0 5px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+/* View Product Button */
+.view-btn {
+  background-color: #0078d7;
+  color: white;
+}
+
+.view-btn:hover {
+  background-color: #005fa3;
+}
+
+/* Add to Cart Button */
+.add-cart-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.add-cart-btn:hover {
+  background-color: #1e7e34;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Cart message (optional) */
+.cart-message {
+  text-align: center;
+  color: #28a745;
+  font-weight: bold;
+  margin-top: 10px;
+}

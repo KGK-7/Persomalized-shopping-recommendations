@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recommended Products</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>Recommended Products</h1>
+    <div id="user-actions" style="display:none;">
+      <span id="user-name"></span>
+      <button id="logoutBtn">Logout</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Login Section -->
+    <div id="login-container" class="login-container">
+      <input type="email" id="email" placeholder="Enter your email" required />
+      <button id="loginBtn">Login</button>
+      <p id="loginMessage"></p>
+    </div>
+
+    <!-- Product Grid Section (hidden initially) -->
+    <div id="product-grid" class="grid" style="display:none;"></div>
+    <div id="message" class="message"></div>
+  </main>
+
+  <template id="product-card-template">
+    <div class="card">
+      <img class="product-img" />
+      <div class="card-body">
+        <h2 class="product-name"></h2>
+        <p class="product-price"></p>
+        <button class="view-btn">View Product</button>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
