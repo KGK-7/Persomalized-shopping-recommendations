@@ -32,7 +32,6 @@ def load_all_embeddings():
     for row in rows:
         products.append(row.product_id)
         emb = pickle.loads(row.embedding)
-        # flatten in case it is 2D [[...]]
         if len(emb.shape) > 1:
             emb = emb.flatten()
         embeddings.append(emb)
