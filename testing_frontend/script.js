@@ -1,21 +1,15 @@
-// -------------------- API Endpoints --------------------
 const API_LOGIN_URL = "http://127.0.0.1:8000/login";
 const API_VIEW_PRODUCT = "http://127.0.0.1:8000/view_product";
 const API_ADD_TO_CART = "http://127.0.0.1:8000/add_to_cart";
-
-// -------------------- DOM Elements --------------------
 const grid = document.getElementById("product-grid");
 const message = document.getElementById("message");
-
 const loginContainer = document.getElementById("login-container");
 const loginBtn = document.getElementById("loginBtn");
 const loginMessage = document.getElementById("loginMessage");
-
 const userActions = document.getElementById("user-actions");
 const logoutBtn = document.getElementById("logoutBtn");
 const userNameDisplay = document.getElementById("user-name");
 
-// -------------------- Helper Functions --------------------
 function getLoggedInUser() {
   return {
     id: parseInt(localStorage.getItem("user_id")),
@@ -38,8 +32,6 @@ function checkLoginStatus() {
     message.textContent = "";
   }
 }
-
-// -------------------- Login --------------------
 loginBtn.addEventListener("click", async () => {
   const email = document.getElementById("email").value.trim();
   if (!email) {
@@ -68,23 +60,34 @@ loginBtn.addEventListener("click", async () => {
     loginMessage.textContent = "Login failed: " + err.message;
   }
 });
-
-// -------------------- Logout --------------------
 logoutBtn.addEventListener("click", () => {
   localStorage.removeItem("user_id");
   localStorage.removeItem("user_name");
   checkLoginStatus();
 });
 
-// -------------------- Fetch Recommendations --------------------
-async function fetchRecommendations(productId = 10) {
+async function fetchRecommendations(productId = null) {
   const user = getLoggedInUser();
   if (!user.id) return;
 
-  const requestData = {
-    user_id: user.id,
-    product_id: productId
-  };
+  // If no productId provided, fetch first product dynamically
+  if (!productId) {
+    try {
+      const resAll = await fetch("http://127.0.0.1:8000/get_all_products"); // new endpoint
+      const allProducts = await resAll.json();
+      if (allProducts.length === 0) {
+        message.textContent = "No products available.";
+        return;
+      }
+      productId = allProducts[0].product_id; // first product
+    } catch (err) {
+      console.error(err);
+      message.textContent = "Failed to fetch products.";
+      return;
+    }
+  }
+
+  const requestData = { user_id: user.id, product_id: productId };
 
   try {
     message.textContent = "Loading recommendations...";
@@ -108,7 +111,6 @@ async function fetchRecommendations(productId = 10) {
   }
 }
 
-// -------------------- Render Product Cards --------------------
 function renderProducts(products) {
   grid.innerHTML = "";
 
@@ -140,7 +142,6 @@ function renderProducts(products) {
       fetchRecommendations(p.id); // fetch recommendations for clicked product
     };
 
-    // Add to Cart Button
     card.querySelector(".add-cart-btn").onclick = async () => {
       try {
         const user = getLoggedInUser();
@@ -162,6 +163,4 @@ function renderProducts(products) {
     grid.appendChild(card);
   });
 }
-
-// -------------------- Initialize --------------------
 checkLoginStatus();
